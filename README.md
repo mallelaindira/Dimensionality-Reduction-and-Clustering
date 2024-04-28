@@ -30,9 +30,15 @@ Here is the sample output of the top 6 rows
 I first tried to retain all the features for clustering i.e. PC1, 2 and 3 and through scatterplots tried to see if the model is performing well using all 3 factors.
 
 ![4 Clusters Visualization](https://github.com/mallelaindira/Dimensionality-Reduction-and-Clustering/blob/main/4Clusters.png)
+![2 Clusters Visualization](https://github.com/mallelaindira/Dimensionality-Reduction-and-Clustering/blob/main/2Clusters.png)
+![3 Clusters Visualization](https://github.com/mallelaindira/Dimensionality-Reduction-and-Clustering/blob/main/3Clusters.png)
 
 
 While PC1 and 2 provided clear possibility for clustering the data into 3 clusters, the combination of PC2, PC3 and PC1 and PC3 could not result in possibility for clustering into 3.
+
+![PC1 vs PC3 Visualization](https://github.com/mallelaindira/Dimensionality-Reduction-and-Clustering/blob/main/PC1VSPC3.png)
+![PC2 vs PC3 Visualization](https://github.com/mallelaindira/Dimensionality-Reduction-and-Clustering/blob/main/PC2VSPC3.png)
+![PC1 vs PC2 Visualization](https://github.com/mallelaindira/Dimensionality-Reduction-and-Clustering/blob/main/PC1VSPC2.png)
 
 
 Hence I opted to go for 2 features’ selection instead of 3.
