@@ -2,78 +2,46 @@
 
 ## Title: Lab 3 Case Study: Unsupervised Learning in Learning Analytics
 
-## Author: Indira Mallela
-## Date: 2024-04-28
+# Lab 3 Case Study Analysis: Dimensionality reduction and clustering
 
+## Simulated Data:
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+I first simulated data with three main features for 100 students (Unique Student IDs)
 
-## Introduction
+- Student_Engagement
+- Student_Performance
+- GPA
 
-Learning analytics is the use of data to understand and improve learning. Unsupervised learning is a type of machine learning that can be used to identify patterns and relationships in data without the need for labeled data.
+Scaled these features. The purpose of scaling the data is to ensure that all features have the same scale and are centered around zero.
 
-In this case study, you will use unsupervised learning to analyze learning data from a Simulated School course. You will use dimensionality reduction to reduce the number of features in the data, and then use clustering to identify groups of students with similar learning patterns.
+Combined these features to have a dataframe 
 
-## Data
+Here is the sample output of the top 6 rows
 
-The data for this case study is generated with the simulated function below. The data contains the following features:
+| student_id | student_engagement | student_performance | student_gpa | cluster |
+|------------|--------------------|---------------------|-------------|---------|
+| 1          | 35.47855           | 50.52231            | 3.013657    | 2       |
+| 2          | 51.79512           | 58.88396            | 3.348817    | 1       |
+| 3          | 62.41012           | 40.56755            | 2.728112    | 3       |
+| 4          | 35.20679           | 62.46033            | 3.576468    | 2       |
+| 5          | 59.37552           | 54.69326            | 3.031107    | 3       |
+| 6          | 57.00109           | 54.09745            | 2.251470    | 3       |
 
-Student ID: A unique identifier for each student
-Feature 1: A measure of student engagement
-Feature 2: A measure of student performance
+I first tried to retain all the features for clustering i.e. PC1, 2 and 3 and through scatterplots tried to see if the model is performing well using all 3 factors.
 
-```{r}
-simulate_student_features <- function(n = 100) {
-  # Set the random seed
-  set.seed(260923)
-  
-  # Generate unique student IDs
-  student_ids <- seq(1, n)
+While PC1 and 2 provided clear possibility for clustering the data into 3 clusters, the combination of PC2, PC3 and PC1 and PC3 could not result in possibility for clustering into 3.
 
-  # Simulate student engagement
-  student_engagement <- rnorm(n, mean = 50, sd = 10)
+Hence I opted to go for 2 features’ selection instead of 3.
 
-  # Simulate student performance
-  student_performance <- rnorm(n, mean = 60, sd = 15)
+Also, I tried to have 2 and 4 clusters.
 
-  # Combine the data into a data frame
-  student_features <- data.frame(
-    student_id = student_ids,
-    student_engagement = student_engagement,
-    student_performance = student_performance
-  )
+Images are attached here.
 
-  # Return the data frame
-  return(student_features)
-}
-```
+With two clusters the visual inspection of PC1 and PC2 appears to be possibe.
+But with 4 clusters the demarcation does not appear to be optimum.
 
-This function takes the number of students to simulate as an input and returns a data frame with three columns: student_id, student_engagement, and student_performance. The student_engagement and student_performance features are simulated using normal distributions with mean values of 50 and 60, respectively, and standard deviations of 10 and 15, respectively.
+Hence I chose to go with two principle components and 3 clusters to have optimum number of clusters.
 
-To use the simulate_student_features() function, we can simply pass the desired number of students to simulate as the argument:
+## References:
 
-```{r}
-student_features <- simulate_student_features(n = 100)
-```
-
-We can then use this data frame to perform unsupervised learning to identify groups of students with similar learning patterns,
-
-## Tasks
-
-- Simulate the data.  
-- Perform dimensionality reduction on the data using PCA.  
-- Cluster the data using KMeans and other clustering algorithms.  
-- Interpret the results of your analysis.  
-
-## Submission
-
-Submit a report containing the following:
-
-- A brief description of your approach to dimensionality reduction and clustering.  
-- The results of your analysis, including the number of clusters identified, the characteristics of each cluster, and any other insights you gained from the data.  
-- A discussion of the implications of your findings for learning analytics.  
-- Provide at least one scholarly reference.  
-
-*Your report should include your code. Submit the published RPubs link to Blackboard.*
+C. Boutsidis, A. Zouzias, M. W. Mahoney and P. Drineas, "Randomized Dimensionality Reduction for $k$ -Means Clustering," in IEEE Transactions on Information Theory, vol. 61, no. 2, pp. 1045-1062, Feb. 2015, doi: 10.1109/TIT.2014.2375327.
